@@ -1,0 +1,19 @@
+import java.util.PriorityQueue;
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        // Min-heap to store k largest elements
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        for (int num : nums) {
+            pq.add(num);
+            // Maintain only k elements in heap
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+        
+        // Top of heap is the kth largest element
+        return pq.peek();
+    }
+}
